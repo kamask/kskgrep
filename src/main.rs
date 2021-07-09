@@ -5,12 +5,12 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let config = Config::new(&args).unwrap_or_else(|err| {
-        println!("Проблема при вводе аргументов: {}", err);
+        eprintln!("Проблема при вводе аргументов: {}", err);
         process::exit(1);
     });
 
     if let Err(e) = kskgrep::run(config) {
-        println!("{}", e);
+        eprintln!("{}", e);
         process::exit(1);
     }
 }
